@@ -17,7 +17,7 @@ function New-ITGlueConfigurationTypes {
     try {
         $ITGlue_Headers.Add('x-api-key', (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
         $rest_output = Invoke-RestMethod -method 'POST' -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
-        -body $body -ContentType "application/vnd.api+json; charset=utf-8" -ErrorAction Stop -ErrorVariable $web_error
+            -body $body -ContentType "application/vnd.api+json; charset=utf-8" -ErrorAction Stop -ErrorVariable $web_error
     } catch {
         Write-Error $_
     } finally {
@@ -106,7 +106,7 @@ function Set-ITGlueConfigurationTypes {
     try {
         $ITGlue_Headers.Add('x-api-key', (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
         $rest_output = Invoke-RestMethod -method 'PATCH' -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
-        -body $body -ContentType "application/vnd.api+json; charset=utf-8" -ErrorAction Stop -ErrorVariable $web_error
+            -body $body -ContentType "application/vnd.api+json; charset=utf-8" -ErrorAction Stop -ErrorVariable $web_error
     } catch {
         Write-Error $_
     } finally {
