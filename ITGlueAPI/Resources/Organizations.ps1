@@ -12,7 +12,7 @@ function New-ITGlueOrganizations {
 
     $body = ConvertTo-Json -InputObject $body -Depth $ITGlue_JSON_Conversion_Depth
 
-		$body = [System.Text.Encoding]::UTF8.GetBytes($body)
+    $body = [System.Text.Encoding]::UTF8.GetBytes($body)
 
     try {
         $ITGlue_Headers.Add('x-api-key', (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
@@ -252,7 +252,7 @@ function Set-ITGlueOrganizations {
 
     $body = ConvertTo-Json -InputObject $body -Depth $ITGlue_JSON_Conversion_Depth
 
-		$body = [System.Text.Encoding]::UTF8.GetBytes($body)
+    $body = [System.Text.Encoding]::UTF8.GetBytes($body)
 
     try {
         $ITGlue_Headers.Add('x-api-key', (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
