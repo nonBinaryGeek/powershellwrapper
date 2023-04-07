@@ -1,66 +1,67 @@
 # IT-Glue-API-PowerShell-Wrapper
 
-This PowerShell module acts as a wrapper for the [IT Glue](http://itglue.com) API.
+Ce module PowerShell sert de wrapper pour l'API d'IT Glue.
 
 ---
 
 ## Introduction
 
-IT Glue's API offers the ability to read, create, and update much of the data within IT Glue's documentation platform. That includes organizations, contacts, configuration items, and more. Full documentation for IT Glue's RESTful API can be found [here](https://api.itglue.com/developer/).
+L'API d'IT Glue offre la possibilité de lire, créer et mettre à jour une grande partie des données de la plateforme de documentation d'IT Glue. Cela inclut les organisations, les contacts, les éléments de configuration et plus encore. La documentation complète de l'API RESTful d'IT Glue peut être trouvée [ici](https://api.itglue.com/developer/).
 
-This module serves to abstract away the details of interacting with IT Glue's API endpoints in such a way that is consistent with PowerShell nomenclature. This gives system administrators and PowerShell developers a convenient and familiar way of using IT Glue's API to create documentation scripts, automation, and integrations.
+Ce module vise à masquer les détails de l'interaction avec les points d'extrémité de l'API d'IT Glue d'une manière cohérente avec la terminologie de PowerShell. Cela donne aux administrateurs système et aux développeurs PowerShell un moyen pratique et familier d'utiliser l'API d'IT Glue pour créer des scripts de documentation, des automatisations et des intégrations.
 
-### Function Naming
+## Nomenclature des fonctions
 
-IT Glue features a REST API that makes use of common HTTP(s) GET, POST, PATCH, and DELETE actions. In order to maintain PowerShell best practices, only approved verbs are used. As such, the following mapping should be utilized:
+IT Glue dispose d'une API REST qui utilise des actions GET, POST, PATCH et DELETE communes à HTTP(s). Afin de respecter les meilleures pratiques de PowerShell, seuls les verbes approuvés sont utilisés. Ainsi, la correspondance suivante doit être utilisée :
 
-- GET     -> Get-
-- POST    -> New-
-- PATCH   -> Set-
-- DELETE  -> Remove-
+- GET    -> Get-
+- POST   -> New-
+- PATCH  -> Set-
+- DELETE -> Remove-
 
-Additionally, PowerShell's `verb-noun` nomenclature is respected. Each noun is prefixed with `ITGlue` in an attempt to prevent any naming problems.
+De plus, la nomenclature `verb-noun` de PowerShell est respectée. Chaque nom est préfixé par `ITGlue` afin d'éviter tout problème de nommage.
 
-For example, one might access the `/users/` API endpoint by running the following PowerShell command with the appropriate parameters:
+Par exemple, on peut accéder au point d'extrémité API /users/ en exécutant la commande PowerShell suivante avec les paramètres appropriés :
 
-```posh
+```powershell
 Get-ITGlueUsers
 ```
 
----
-
 ## Installation
 
-This module can be installed directly from the [PowerShell Gallery](https://www.powershellgallery.com/packages/ITGlueAPI) with the following command:
-```posh
-Install-Module -Name ITGlueAPI
+1. Téléchargez directement le module depuis [ce lien](https://github.com/nonBinaryGeek/powershellwrapper/archive/refs/heads/master.zip).
+
+2. Extraire le fichier `*.zip` sous votre répertoire destiné aux modules PowerShell. Le répertoire par défaut ce trouve sous `C:\Program Files\WindowsPowerShell\Modules`. Pour identifié le chemin des autres répertoires, utilisez la commande PowerShell suivante:
+
+```powershell
+$env:PSModulePath
 ```
 
-If running an older version of PowerShell, or if PowerShellGet is unavailable, one can manually download the Master branch and place the "ITGlueAPI" folder into the (default) `C:\Program Files\WindowsPowerShell\Modules` folder.
+3. Finalement, chargez le module dans votre session PowerShell:
 
-After installation (by either methods), load the module into your workspace:
-
-```posh
+```powershell
 Import-Module ITGlueAPI
 ```
 
-## Initial Setup
+## Configuration initiale
 
-The first time you run this module, you will need to configure the base URI and API key that are used to talk with IT Glue. Doing so is as follows:
+La première fois que vous utilisez ce module, vous devrez configurer l'URI de base et la clé API utilisées pour communiquer avec IT Glue. Pour ce faire, procédez comme suit :
 
-1. Run `Add-ITGlueBaseURI`. By default, IT Glue's `api.itglue.com` uri is entered. If you have your own API gateway or proxy, you may put in your own custom uri by specifiying the `-base_uri` parameter, as follows: `Add-ITGlueBaseURI -base_uri http://myapi.gateway.example.com`.
+1. Exécutez `Add-ITGlueBaseURI`. Par défaut, l'URI **api.itglue.com** d'IT Glue est entrée. Si vous avez votre propre passerelle ou proxy API, vous pouvez entrer votre propre URI personnalisée en spécifiant le paramètre `-base_uri`, comme suit : 
 
-2. Run `Add-ITGlueAPIKey`. It will prompt you to enter your API key (please refer to IT Glue's documentation [here](https://api.itglue.com/developer/) for generating an API key).
+```powershell
+Add-ITGlueBaseURI -base_uri http://myapi.gateway.example.com
+```
 
-3. [optional] If you would like the IT Glue module to remember your base uri and API key, you can run `Export-ITGlueModuleSettings`. This will create a config file at `%UserProfile%\ITGlueAPI` that securely holds this information. Next time you run `Import-Module`, this configuration will automatically be loaded.
+2. Exécutez `Add-ITGlueAPIKey`. Une clé API vous sera demandée. (*veuillez vous référer à la [documentation d'IT Glue](https://api.itglue.com/developer/) pour générer une clé API*).
 
-:warning: Exporting module settings encrypts your API key in a format that can **only be unencrypted with your Windows account**. It makes use of PowerShell's `System.Security.SecureString` type, which uses reversible encrypted tied to your user principal. This means that you cannot copy your configuration file to another computer or user account and expect it to work.
+3. (OPTIONNEL) - Si vous souhaitez que le module IT Glue se souvienne de votre URI de base et de votre clé API, vous pouvez exécuter `Export-ITGlueModuleSettings`. Cela créera un fichier de configuration dans `%UserProfile%\ITGlueAPI` qui contiendra en toute sécurité ces informations. La prochaine fois que vous exécuterez `Import-Module`, cette configuration sera automatiquement chargée.
 
-:warning: Exporting and importing module settings requires use of the `ConvertTo-SecureString` cmdlet, which is currently unavailable in Linux and Mac PowerShell core ports. Until PS Core 6.0.0 is available, this functionality only works on Windows.
+:warning: L'exportation des paramètres de module crypte votre clé API dans un format qui ne peut être déchiffré qu'avec votre compte Windows. Elle utilise le type `System.Security.SecureString` de PowerShell, qui utilise un chiffrement réversible lié à votre principal utilisateur. Cela signifie que vous ne pouvez pas copier votre fichier de configuration sur un autre ordinateur ou un autre compte utilisateur et vous attendre à ce qu'il fonctionne.
 
-## Usage
+:warning: L'exportation et l'importation des paramètres de module nécessitent l'utilisation de la cmdlet `ConvertTo-SecureString`, qui n'est actuellement pas disponible dans les ports PowerShell Core de Linux et Mac. Jusqu'à ce que PS Core 6.0.0 soit disponible, cette fonctionnalité ne fonctionne que sur Windows.
 
-Calling an API resource is as simple as running `Get-ITGlue<resourcename>`. The following is a table of supported functions and their corresponding API resources:
+## Utilisation
 
 | API Resource             | Create                              | Read                                | Update                              | Delete                               |
 | ------------------------ | ----------------------------------- | ----------------------------------- | ----------------------------------- | ------------------------------------ |
@@ -94,22 +95,16 @@ Calling an API resource is as simple as running `Get-ITGlue<resourcename>`. The 
 | User Metrics             | -                                   | `Get-ITGlueUserMetrics`             | -                                   | -                                    |
 | Users                    | -                                   | `Get-ITGlueUsers`                   | `Set-ITGlueUsers`                   | -                                    |
 
-Note, table entries with `-` indicate that the functionality is not supported by the IT Glue API.
+Chaque fonction `Get-` répondra avec les données brutes fournies par l'API d'IT Glue. Habituellement, ces données ont au moins trois sous-sections :
 
-Each `Get-` function will respond with the raw data that IT Glue's API provides. Usually, this data has at least three sub-sections:
+- `data` - Les informations réellement demandées (ce qui intéresse la plupart des gens)
+- `links` - Des liens vers des aspects spécifiques des données
+- `meta` - Des informations sur le nombre de pages de résultats disponibles et d'autres métadonnées.
 
-- `data` - The actual information requested (this is what most people care about)
-- `links` - Links to specific aspects of the data
-- `meta` - Information about the number of pages of results are available and other metadata.
+Chaque ressource permet l'utilisation de filtres et de paramètres pour spécifier la sortie désirée de l'API d'IT Glue. Consultez le [wiki sur l'utilisation des filtres et des paramètres](https://github.com/itglue/powershellwrapper/wiki/Using-Filters-and-Parameters).
 
-Each resource allows filters and parameters to be used to specify the desired output from IT Glue's API. Check out the wiki article on [Using Filters and Parameters](https://github.com/itglue/powershellwrapper/wiki/Using-Filters-and-Parameters).
+Une liste complète des fonctions peut être obtenue en exécutant `Get-Command -Module ITGlueAPI`. Les informations d'aide et la liste des paramètres peuvent être trouvées en exécutant `Get-Help <nom de la commande>`.
 
-A full list of functions can be retrieved by running `Get-Command -Module ITGlueAPI`. Help info and a list of parameters can be found by running `Get-Help <command name>`, such as:
-
-```posh
+```powershell
 Get-Help Get-ITGlueUsers
 ```
-
-## Wiki :book:
-
-For more information about using this module, as well as examples and advanced functionality, check out our [wiki](https://github.com/itglue/powershellwrapper/wiki/)!
