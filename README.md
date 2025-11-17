@@ -63,37 +63,37 @@ Add-ITGlueBaseURI -base_uri http://myapi.gateway.example.com
 
 ## Utilisation
 
-| API Resource             | Create                              | Read                                | Update                              | Delete                               |
-| ------------------------ | ----------------------------------- | ----------------------------------- | ----------------------------------- | ------------------------------------ |
-| Attachments              | `New-ITGlueAttachments`             | -                                   | `Set-ITGlueAttachments`             | `Remove-ITGlueAttachments`           |
-| Configuration Interfaces | `New-ITGlueConfigurationInterfaces` | `Get-ITGlueConfigurationInterfaces` | `Set-ITGlueConfigurationInterfaces` | -                                    |
-| Configuration Statuses   | `New-ITGlueConfigurationStatuses`   | `Get-ITGlueConfigurationStatuses`   | `Set-ITGlueConfigurationStatuses`   | -                                    |
-| Configuration Types      | `New-ITGlueConfigurationTypes`      | `Get-ITGlueConfigurationTypes`      | `Set-ITGlueConfigurationTypes`      | -                                    |
-| Configurations           | `New-ITGlueConfigurations`          | `Get-ITGlueConfigurations`          | `Set-ITGlueConfigurations`          | `Remove-ITGlueConfigurations`        |
-| Contact Types            | `New-ITGlueContactTypes`            | `Get-ITGlueContactTypes`            | `Set-ITGlueContactTypes`            | -                                    |
-| Contacts                 | `New-ITGlueContacts`                | `Get-ITGlueContacts`                | `Set-ITGlueContacts`                | `Remove-ITGlueContacts`              |
-| Countries                | -                                   | `Get-ITGlueCountries`               | -                                   | -                                    |
-| Documents                | -                                   | -                                   | `Set-ITGlueDocuments`               | -                                    |
-| Domains                  | -                                   | `Get-ITGlueDomains`                 | -                                   | -                                    |
-| Expirations              | -                                   | `Get-ITGlueExpirations`             | -                                   | -                                    |
-| Flexible Asset Fields    | `New-ITGlueFlexibleAssetFields`     | `Get-ITGlueFlexibleAssetFields`     | `Set-ITGlueFlexibleAssetFields`     | `Remove-ITGlueFlexibleAssetFields`   |
-| Flexible Asset Types     | `New-ITGlueFlexibleAssetTypes`      | `Get-ITGlueFlexibleAssetTypes`      | `Set-ITGlueFlexibleAssetTypes`      | -                                    |
-| Flexible Assets          | `New-ITGlueFlexibleAssets`          | `Get-ITGlueFlexibleAssets`          | `Set-ITGlueFlexibleAssets`          | `Remove-ITGlueFlexibleAssets`        |
-| Groups                   | -                                   | `Get-ITGlueGroups`                  | -                                   | -                                    |
-| Locations                | `New-ITGlueLocations`               | `Get-ITGlueLocations`               | `Set-ITGlueLocations`               | `Remove-ITGlueLocations`             |
-| Manufacturers            | `New-ITGlueManufacturers`           | `Get-ITGlueManufacturers`           | `Set-ITGlueManufacturers`           | -                                    |
-| Models                   | `New-ITGlueModels`                  | `Get-ITGlueModels`                  | `Set-ITGlueModels`                  | -                                    |
-| Operating Systems        | -                                   | `Get-ITGlueOperatingSystems`        | -                                   | -                                    |
-| Organization Statuses    | `New-ITGlueOrganizationStatuses`    | `Get-ITGlueOrganizationStatuses`    | `Set-ITGlueOrganizationStatuses`    | -                                    |
-| Organization Types       | `New-ITGlueOrganizationTypes`       | `Get-ITGlueOrganizationTypes`       | `Set-ITGlueOrganizationTypes`       | -                                    |
-| Organizations            | `New-ITGlueOrganizations`           | `Get-ITGlueOrganizations`           | `Set-ITGlueOrganizations`           | `Remove-ITGlueOrganizations`         |
-| Password Categories      | `New-ITGluePasswordCategories`      | `Get-ITGluePasswordCategories`      | `Set-ITGluePasswordCategories`      | -                                    |
-| Passwords                | `New-ITGluePasswords`               | `Get-ITGluePasswords`               | `Set-ITGluePasswords`               | `Remove-ITGluePasswords`             |
-| Platforms                | -                                   | `Get-ITGluePlatforms`               | -                                   | -                                    |
-| Regions                  | -                                   | `Get-ITGlueRegions`                 | -                                   | -                                    |
-| Related Items            | `New-ITGlueRelatedItems`            | -                                   | `Set-ITGlueRelatedItems`            | `Remove-ITGlueRelatedItems`          |
-| User Metrics             | -                                   | `Get-ITGlueUserMetrics`             | -                                   | -                                    |
-| Users                    | -                                   | `Get-ITGlueUsers`                   | `Set-ITGlueUsers`                   | -                                    |
+| API Resource             | Create                              | Read                                | Update                              | Delete                                 |
+| ------------------------ | ----------------------------------- | ----------------------------------- | ----------------------------------- | -------------------------------------- |
+| Attachments              | `New-ITGlueAttachments`             | -                                   | `Set-ITGlueAttachments`             | `Remove-ITGlueAttachments`             |
+| Configuration Interfaces | `New-ITGlueConfigurationInterfaces` | `Get-ITGlueConfigurationInterfaces` | `Set-ITGlueConfigurationInterfaces` | `Remove-ITGlueConfigurationInterfaces` |                                    |
+| Configuration Statuses   | `New-ITGlueConfigurationStatuses`   | `Get-ITGlueConfigurationStatuses`   | `Set-ITGlueConfigurationStatuses`   | -                                      |
+| Configuration Types      | `New-ITGlueConfigurationTypes`      | `Get-ITGlueConfigurationTypes`      | `Set-ITGlueConfigurationTypes`      | -                                      |
+| Configurations           | `New-ITGlueConfigurations`          | `Get-ITGlueConfigurations`          | `Set-ITGlueConfigurations`          | `Remove-ITGlueConfigurations`          |
+| Contact Types            | `New-ITGlueContactTypes`            | `Get-ITGlueContactTypes`            | `Set-ITGlueContactTypes`            | -                                      |
+| Contacts                 | `New-ITGlueContacts`                | `Get-ITGlueContacts`                | `Set-ITGlueContacts`                | `Remove-ITGlueContacts`                |
+| Countries                | -                                   | `Get-ITGlueCountries`               | -                                   | -                                      |
+| Documents                | -                                   | -                                   | `Set-ITGlueDocuments`               | -                                      |
+| Domains                  | -                                   | `Get-ITGlueDomains`                 | -                                   | -                                      |
+| Expirations              | -                                   | `Get-ITGlueExpirations`             | -                                   | -                                      |
+| Flexible Asset Fields    | `New-ITGlueFlexibleAssetFields`     | `Get-ITGlueFlexibleAssetFields`     | `Set-ITGlueFlexibleAssetFields`     | `Remove-ITGlueFlexibleAssetFields`     |
+| Flexible Asset Types     | `New-ITGlueFlexibleAssetTypes`      | `Get-ITGlueFlexibleAssetTypes`      | `Set-ITGlueFlexibleAssetTypes`      | -                                      |
+| Flexible Assets          | `New-ITGlueFlexibleAssets`          | `Get-ITGlueFlexibleAssets`          | `Set-ITGlueFlexibleAssets`          | `Remove-ITGlueFlexibleAssets`          |
+| Groups                   | -                                   | `Get-ITGlueGroups`                  | -                                   | -                                      |
+| Locations                | `New-ITGlueLocations`               | `Get-ITGlueLocations`               | `Set-ITGlueLocations`               | `Remove-ITGlueLocations`               |
+| Manufacturers            | `New-ITGlueManufacturers`           | `Get-ITGlueManufacturers`           | `Set-ITGlueManufacturers`           | -                                      |
+| Models                   | `New-ITGlueModels`                  | `Get-ITGlueModels`                  | `Set-ITGlueModels`                  | -                                      |
+| Operating Systems        | -                                   | `Get-ITGlueOperatingSystems`        | -                                   | -                                      |
+| Organization Statuses    | `New-ITGlueOrganizationStatuses`    | `Get-ITGlueOrganizationStatuses`    | `Set-ITGlueOrganizationStatuses`    | -                                      |
+| Organization Types       | `New-ITGlueOrganizationTypes`       | `Get-ITGlueOrganizationTypes`       | `Set-ITGlueOrganizationTypes`       | -                                      |
+| Organizations            | `New-ITGlueOrganizations`           | `Get-ITGlueOrganizations`           | `Set-ITGlueOrganizations`           | `Remove-ITGlueOrganizations`           |
+| Password Categories      | `New-ITGluePasswordCategories`      | `Get-ITGluePasswordCategories`      | `Set-ITGluePasswordCategories`      | -                                      |
+| Passwords                | `New-ITGluePasswords`               | `Get-ITGluePasswords`               | `Set-ITGluePasswords`               | `Remove-ITGluePasswords`               |
+| Platforms                | -                                   | `Get-ITGluePlatforms`               | -                                   | -                                      |
+| Regions                  | -                                   | `Get-ITGlueRegions`                 | -                                   | -                                      |
+| Related Items            | `New-ITGlueRelatedItems`            | -                                   | `Set-ITGlueRelatedItems`            | `Remove-ITGlueRelatedItems`            |
+| User Metrics             | -                                   | `Get-ITGlueUserMetrics`             | -                                   | -                                      |
+| Users                    | -                                   | `Get-ITGlueUsers`                   | `Set-ITGlueUsers`                   | -                                      |
 
 Chaque fonction `Get-` répondra avec les données brutes fournies par l'API d'IT Glue. Habituellement, ces données ont au moins trois sous-sections :
 
