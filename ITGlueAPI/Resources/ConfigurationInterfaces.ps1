@@ -160,3 +160,40 @@ function Set-ITGlueConfigurationInterfaces {
     $data = $rest_output
     return $data
 }
+
+function Remove-ITGlueConfigurationInterfaces {
+    [CmdletBinding(DefaultParametersetName = 'delete')]
+    Param (
+        [Parameter(ParameterSetName = 'delete')]
+        [Nullable[Int64]]$id,
+
+        [Parameter(ParameterSetName = 'delete')]
+        [Nullable[Int64]]$conf_id = $null
+    )
+
+    $resource_uri = ('/configuration_interfaces/{0}' -f $id)
+
+    if ($conf_id) {
+        $resource_uri = ('/configurations/{0}/relationships/configuration_interfaces/{1}' -f $conf_id, $id)
+    }
+
+    $body = @{}
+
+    $body += @{'data' = $data}
+
+    $body = ConvertTo-Json -InputObject $body -Depth $ITGlue_JSON_Conversion_Depth
+
+    try {
+        $ITGlue_Headers.Add('x-api-key', (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
+        $rest_output = Invoke-RestMethod -method 'DELETE' -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
+            -body $body -ContentType "application/vnd.api+json; charset=utf-8" -ErrorAction Stop -ErrorVariable $web_error
+    } catch {
+        Write-Error $_
+    } finally {
+        [void] ($ITGlue_Headers.Remove('x-api-key')) # Quietly clean up scope so the API key doesn't persist
+    }
+
+    $data = @{}
+    $data = $rest_output
+    return $data
+}
