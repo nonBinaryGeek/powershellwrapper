@@ -245,10 +245,10 @@
             # Tags = @()
 
             # A URL to the license for this module.
-            LicenseUri = 'https://github.com/nonBinaryGeek/powershellwrapper/blob/master/LICENSE'
+            LicenseUri = 'https://github.com/nonBinaryGeek/ITGlueAPIWrapper/blob/master/LICENSE'
 
             # A URL to the main website for this project.
-            ProjectUri = 'https://github.com/nonBinaryGeek/powershellwrapper'
+            ProjectUri = 'https://github.com/nonBinaryGeek/ITGlueAPIWrapper'
 
             # A URL to an icon representing this module.
             # IconUri = ''
